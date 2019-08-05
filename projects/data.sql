@@ -5,15 +5,21 @@ CREATE TABLE `events` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '事件',
   `visible` tinyint(1) NOT NULL DEFAULT '0',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 DROP TABLE IF EXISTS `eventdetails`;
 CREATE TABLE `eventdetails` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `eId` int(10) unsigned not null comment '一对多events',
+  `eid` int(10) unsigned not null comment '一对多events',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '事件的具体',
   `status` tinyint(1) NOT NULL DEFAULT '0',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
