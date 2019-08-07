@@ -29,7 +29,7 @@ module.exports = appInfo => {
       port: 3306, // mysql服务端口
       database: 'skdb', // 数据库名
       username: 'root',  // 数据库用户名
-      password: '34erdfcv', // 数据库密码
+      password: '12345678', // 数据库密码
       define: {  // model的全局配置
         	timestamps: true,   // 添加create,update,delete时间戳
         	paranoid: true,   // 添加软删除
