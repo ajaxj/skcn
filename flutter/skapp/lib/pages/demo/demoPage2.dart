@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:skapp/common/httpUtil.dart';
 import 'package:skapp/common/api.dart';
+import 'package:dio/dio.dart';
 
 class DemoPage2 extends StatefulWidget {
   DemoPage2({Key key}) : super(key: key);
@@ -14,8 +15,21 @@ class _DemoPage2State extends State<DemoPage2> {
 
   void postEvent(String name) async{
     var data = {"name":name};
+    // response=await dio.post("/test",data:{"id":12,"name":"wendu"})
     var result =  await HttpUtil().post(Api.EVENT_LIST,data:data);
     print(result);
+
+    // try{
+    //   Response response;
+    //   var data={"name":"TypeText"};
+    //   response = await Dio().post(
+    //     "http://47.96.183.71:7006/api/events",
+    //       data:data
+    //   );
+    //   print(response.data.toString());
+    // }catch(e){
+    //   return print(e);
+    // }
   }
 
 

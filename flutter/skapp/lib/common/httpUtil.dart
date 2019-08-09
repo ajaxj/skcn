@@ -87,7 +87,7 @@ class HttpUtil {
   post(url, {data, options, cancelToken}) async {
     Response response;
     try {
-      response = await dio.post(url, queryParameters: data, options: options, cancelToken: cancelToken);
+      response = await dio.post(url, data: data, options: options, cancelToken: cancelToken);
       print('post success---------${response.data}');
     } on DioError catch (e) {
       print('post error---------$e');
