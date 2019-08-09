@@ -54,13 +54,21 @@ module.exports = appInfo => {
   };
 
 
-  // config.security = {
-  //   csrf :{
-  //     enable:false,    //关闭全部的csrf
-  //     ignoreJSON:true,    //设为true,放过所有的content-type为 application/json
-  //   },
-  //   // domainWhiteList: [ '*' ],
-  // };
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.html': 'nunjucks',
+    },
+  };
+
+
+  config.security = {
+    csrf :{
+      // enable:false,    //关闭全部的csrf
+      ignoreJSON:true,    //设为true,放过所有的content-type为 application/json
+    },
+    // domainWhiteList: [ '*' ],
+  };
 
   return {
     ...config,
