@@ -8,5 +8,8 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/test',controller.home.test);
 
-  require("./router/event")(app);       //event eventdetail的api
+  require("./router/event")(app);
+
+  require("./router/api")(app);       
+
 };

@@ -1,0 +1,190 @@
+{% extends "../inc/base.html" %}
+{% block style %}
+<!-- DataTables CSS -->
+<link href="/public/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+<!-- DataTables Responsive CSS -->
+<link href="/public/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">Event</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    触发的事件|<a href="/events/add">添加</a>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Created</th>
+                                <th>Updated</th>
+                                <th>Edit|Del</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in eventlist %}
+                          <tr>
+                            <td>
+                            {{item.name}}
+                            </td>
+                              <td>{{item.createdAt}}</td>
+                              <td>{{item.updatedAt}}</td>
+                            <td>
+                              <a href='/events/delete/{{item.id}}'>Del</a>
+                            </td>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="dataTables_info">Total {{pager.maxNum}} 总{{ pager.pageCount }} 页</div>
+                      </div>
+                      <div class="col-sm-8">
+                          <div class="dataTables_paginate paging_simple_numbers">
+                            <ul class="pagination">
+                              {% set prevNum = 8 %}
+                               {% set nextNum = 8 %}
+
+                               {% if pager.pageCount - pager.pageCurrent > 5 %}
+                                {% set prevNum = 5 %}
+                                {% else %}
+                                 {% set prevNum = prevNum - (pager.pageCount-pager.pageCurrent) %}
+                                {% endif %}
+
+
+                                {% if pager.pageCurrent-5 > 0 %}
+                                  {% set nextNum = 5 %}
+                                {% else %}
+                                   {% set nextNum = nextNum - (pager.pageCurrent) %}
+                                 {% endif %}
+
+                                 {% if pager.pageCount-pager.pageCurrent > 5 and pager.pageCurrent-5 > 0 %}
+                                    {% set prevNum=5 %}
+                                    {% set nextNum=4 %}
+                                {% endif %}
+
+
+                                {% if pager.maxNum==0 %}
+                                    <li class="paginate_button previous disabled">
+                                      <a href="#">首页</a>
+                                    </li>
+                                {% else %}
+                                  <li class="paginate_button previous">
+                                    <a  href='events?offset=1'>首页</a>
+                                  </li>
+                                {% endif %}
+
+
+                              {% if pager.pageCurrent == 1%}
+                              <li class="paginate_button previous disabled">
+                                <a href="#">上一页</a>
+                              </li>
+                              {% else %}
+                                {% if pager.maxNum == 0 %}
+                                  <li class="paginate_button previous disabled">
+                                    <a href="#">上一页</a>
+                                  </li>
+                                {% else %}
+                                  <li class="paginate_button previous">
+                                    <a  href='events?offset={{pager.pagePrev}}'>上一页</a>
+                                  </li>
+                                {% endif %}
+                              {% endif %}
+                                 <!--判断有没有前一页-->
+
+
+                                 {% for i in range(prevNum, 0, -1) %}
+                                   {% if pager.pageCurrent -i > 0 %}
+                                     <li class="paginate_button ">
+                                       <a href='events?offset={{pager.pageCurrent - i}}'>{{ pager.pageCurrent-i}}</a>
+                                     </li>
+                                   {% endif %}
+                                  {% endfor %}
+
+
+
+                                 <li class="paginate_button active" >
+                                   <a href="#">{{ pager.pageCurrent}}</a>
+                                 </li>
+
+                                 {% for i in range(1, nextNum) %}
+                                   {% if pager.pageCurrent + i <= pager.pageCount %}
+                                     <li class="paginate_button ">
+                                       <a href='events?offset={{pager.pageCurrent + i}}'>{{ pager.pageCurrent+i}}</a>
+                                     </li>
+                                   {% endif %}
+                                  {% endfor %}
+
+
+
+
+                              <!--判断有没有下一页-->
+                              {% if pager.pageCurrent == pager.pageCount %}
+                                  <li class="paginate_button next disabled">
+                                    <a href="#">下一页</a>
+                                  </li>
+                              {% else %}
+                                {% if pager.maxNum==0 %}
+                                <li class=" paginate_button next disabled">
+                                  <a href="javascript:void(0)">下一页</a>
+                                </li>
+                                {%  else %}
+                                 <li class="paginate_button next">
+                                   <a  href='events?offset={{pager.pageNext}}'>下一页</a>
+                                 </li>
+                                {% endif %}
+
+                              {% endif %}
+                               <!--判断有没有下一页  end-->
+
+
+                               {% if pager.maxNum==0 %}
+                                   <li class="paginate_button next disabled">
+                                     <a href="#">尾页</a>
+                                   </li>
+                                {% else%}
+                                <li class=" paginate_button next">
+                                  <a  href='events?offset={{pager.pageCount}}'>尾页</a>
+                                </li>
+                                {% endif %}
+                              </ul>
+                        <!--分页 end-->
+
+
+                            </ul>
+                          </div>
+                      </div>
+                    </div>
+
+
+
+                </div>
+                <!--/.panel-body-->
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+{% endblock %}
