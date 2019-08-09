@@ -1,0 +1,22 @@
+备注:
+
+http://47.96.183.71:7006/v1/events
+
+
+测试服务器 本地和远程同步数据库用的:
+执行以下 mysql 命令：
+use mysql #打开 mysql 数据库
+#将 host 设置为%表示任何 ip 都能连接 mysql，当然您也可以将 host 指定为某个 ip
+update user set host='%' where user='root' and host='localhost';
+flush privileges; #刷新权限表，使配置生效
+然后我们就能远程连接我们的 mysql 了。
+3、如果您想关闭远程连接，恢复 mysql 的默认设置（只能本地连接），您可以通过以
+下步骤操作：
+use mysql #打开 mysql 数据库
+#将 host 设置为 localhost 表示只能本地连接 mysql
+update user set host = "localhost" where user = "root" and host= "%";
+flush privileges; #刷新权限表，使配置生效
+备注：您也可以添加一个用户名为 yuancheng，密码为 123456，权限为%（表示任意 ip
+都能连接）的远程连接用户。命令参考如下：
+grant all on *.* to 'yuancheng'@'%' identified by '123456';
+flush privileges;
