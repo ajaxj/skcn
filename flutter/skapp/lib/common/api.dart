@@ -2,7 +2,7 @@
  * 公共的Api
  */
 class Api {
-  static const String BASE_URL = "http://10.0.3.2 :7001/v1/";
+  static const String BASE_URL = "http://47.96.183.71:7006/v1/";
 
   static const String EVENT_LIST = "events";
 

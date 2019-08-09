@@ -26,7 +26,10 @@ class _DemoPageState extends State<DemoPage> {
               },
             ),
             FlatButton(
-              child: Text("Button2"),
+                child: Text("page2",style: TextStyle(color: Colors.red),),
+                onPressed: (){
+                  Routes.router.navigateTo(context,"/demo/page2",transition: TransitionType.inFromRight);
+                }
             ),
             RaisedButton(
             child: Text("Button3"),
