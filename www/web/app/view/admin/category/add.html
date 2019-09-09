@@ -1,0 +1,72 @@
+{% extends "../inc/base.html" %}
+{% block style %}
+<!-- DataTables CSS -->
+<link href="/public/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+<!-- DataTables Responsive CSS -->
+<link href="/public/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- Page Content -->
+<div id="page-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">添加分类</h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  添加抓取的电影|<a href="/fetchmovies">所有抓取的电影</a>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                  <div class="row">
+                      <div class="col-lg-8">
+                          <form role="form" method="post" action="/fetchmovies/create">
+                              <div class="form-group">
+                                  <label>Title</label>
+                                  <input class="form-control" placeholder="电影名称" name="title" value="">
+                              </div>
+                              <div class="form-group">
+                                  <label>Category</label>
+                                  <input class="form-control" placeholder="分类英文" name="category" value="">
+                              </div>
+                              <div class="form-group">
+                                  <label>Src</label>
+                                  <input class="form-control" placeholder="来源" name="src" value="">
+                              </div>
+                              <div class="form-group">
+                                  <label>Fetchurl</label>
+                                  <input class="form-control" placeholder="抓取的地址" name="fetchurl" value="">
+                              </div>
+
+                              <div class="form-group">
+                                  <label>Img</label>
+                                  <input class="form-control" placeholder="图片" name="img" value="">
+                              </div>
+
+                              <button type="submit" class="btn btn-default">添加</button>
+                              <button type="reset" class="btn btn-default">重置</button>
+                          </form>
+                      </div>
+
+                </div>
+                <!--/.panel-body-->
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+{% endblock %}

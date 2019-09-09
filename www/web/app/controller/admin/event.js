@@ -27,7 +27,7 @@ class EventController extends Controller{
       eventlist:eventlist,
       pager: pager
     };
-    await this.ctx.render('events/index',data);
+    await this.ctx.render('admin/events/index',data);
   }
 
 
