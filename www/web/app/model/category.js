@@ -9,14 +9,15 @@ module.exports = app => {
       autuIncrement:true,
     },
     name:STRING(45),
-    cname:STRING(45),
+    ename:STRING(45),
   },{
     tableName:'categories',
   });
 
-  // Event.associate = function (){
-  //     app.model.Event.hasMany(app.model.Eventdetail, {foreignKey: 'eid', targetKey: 'id'});
-  // }
+  Category.associate = function (){
+      app.model.Category.hasMany(app.model.Article, {foreignKey: 'cid', targetKey: 'id'});
+  }
+
 
   return Category;
 }

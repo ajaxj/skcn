@@ -21,7 +21,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    分类|<a href="/fetchcategories/add">添加</a>
+                    分类|<a href="/admin/categories/add">添加</a>
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -32,6 +32,7 @@
                                 <th>name</th>
                                 <th>ename</th>
                                 <th>created_at</th>
+                                <th>updated_at</th>
                                 <th>Edit|Del</th>
                             </tr>
                         </thead>
@@ -41,7 +42,8 @@
                               <td>{{item.id}}</td>
                               <td>{{item.name}}</td>
                               <td>{{item.ename}}</td>
-                              <td>{{item.created_at | formatDate}}</td>
+                              <td>{{item.createdAt}}</td>
+                              <td>{{item.updatedAt}}</td>
                             <td>
                               <a href='categories/edit/{{item.id}}'>Edit</a>
                               |
@@ -87,7 +89,7 @@
                                     </li>
                                 {% else %}
                                   <li class="paginate_button previous">
-                                    <a  href='fetchcategories?offset=1'>首页</a>
+                                    <a  href='categories?offset=1'>首页</a>
                                   </li>
                                 {% endif %}
 
@@ -103,7 +105,7 @@
                                   </li>
                                 {% else %}
                                   <li class="paginate_button previous">
-                                    <a  href='fetchcategories?offset={{pager.pagePrev}}'>上一页</a>
+                                    <a  href='categories?offset={{pager.pagePrev}}'>上一页</a>
                                   </li>
                                 {% endif %}
                               {% endif %}
@@ -113,7 +115,7 @@
                                  {% for i in range(prevNum, 0, -1) %}
                                    {% if pager.pageCurrent -i > 0 %}
                                      <li class="paginate_button ">
-                                       <a href='fetchcategories?offset={{pager.pageCurrent - i}}'>{{ pager.pageCurrent-i}}</a>
+                                       <a href='categories?offset={{pager.pageCurrent - i}}'>{{ pager.pageCurrent-i}}</a>
                                      </li>
                                    {% endif %}
                                   {% endfor %}
@@ -127,7 +129,7 @@
                                  {% for i in range(1, nextNum) %}
                                    {% if pager.pageCurrent + i <= pager.pageCount %}
                                      <li class="paginate_button ">
-                                       <a href='fetchcategories?offset={{pager.pageCurrent + i}}'>{{ pager.pageCurrent+i}}</a>
+                                       <a href='categories?offset={{pager.pageCurrent + i}}'>{{ pager.pageCurrent+i}}</a>
                                      </li>
                                    {% endif %}
                                   {% endfor %}
@@ -147,7 +149,7 @@
                                 </li>
                                 {%  else %}
                                  <li class="paginate_button next">
-                                   <a  href='fetchcategories?offset={{pager.pageNext}}'>下一页</a>
+                                   <a  href='categories?offset={{pager.pageNext}}'>下一页</a>
                                  </li>
                                 {% endif %}
 
@@ -161,14 +163,13 @@
                                    </li>
                                 {% else%}
                                 <li class=" paginate_button next">
-                                  <a  href='fetchcategories?offset={{pager.pageCount}}'>尾页</a>
+                                  <a  href='categories?offset={{pager.pageCount}}'>尾页</a>
                                 </li>
                                 {% endif %}
                               </ul>
                         <!--分页 end-->
 
 
-                            </ul>
                           </div>
                       </div>
                     </div>

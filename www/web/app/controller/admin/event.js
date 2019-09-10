@@ -48,7 +48,7 @@ class EventController extends Controller{
     let id = ctx.params.id;
     let result = await this.service.event.deleteById(id);
     if(result == 1){
-      ctx.redirect('/events')
+      ctx.redirect('/admin/events')
     }else{
       throw "error";
     }

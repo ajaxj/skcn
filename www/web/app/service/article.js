@@ -10,6 +10,7 @@ class ArticleService extends Service {
 
   async total(){
     let result = await this.ctx.model.Article.count();
+    return result;
   }
 
   async create(request){
@@ -19,7 +20,7 @@ class ArticleService extends Service {
   }
 
   async findById(id){
-    let result = await this.ctx.model.Article.findById(id);
+    let result = await this.ctx.model.Article.findByPk(id);
     return result;
   }
 

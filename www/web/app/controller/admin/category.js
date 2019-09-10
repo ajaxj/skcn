@@ -7,7 +7,7 @@ class CategoryController extends Controller{
 
     const ctx = this.ctx;
     let pager = {};
-    pager.pageSize = 20;      //默认的每页数
+    pager.pageSize = 5;      //默认的每页数
     pager.pageCurrent = 1;    //默认当前页
 
     if(ctx.query.offset){
@@ -98,34 +98,31 @@ class CategoryController extends Controller{
     }
   }
   //
-  // async edit(){
-  //   const ctx = this.ctx;
-  //   let id = ctx.params.id;
-  //   let _category = await this.service.fetchcategory.findById(id);
-  //   const data = {
-  //     category:_category,
-  //   }
-  //   await this.ctx.render('fetchcategories/edit',data);
-  // }
-  //
-  // async update(){
-  //   const ctx = this.ctx;
-  //   let id = ctx.request.body.id;
-  //   let _title = ctx.request.body.title;
-  //   let _category = ctx.request.body.category;
-  //   let _src = ctx.request.body.src;
-  //   let _fetchurl = ctx.request.body.fetchurl;
-  //   let _img = ctx.request.body.img;
-  //   let data = {"title":_title,"category":_category,"src":_src,"fetchurl":_fetchurl,"img":_img};
-  //   // let result = id;
-  //   let result = await this.service.fetchcategory.updateById(id,data);
-  //   if(result){
-  //     ctx.redirect('/fetchcategories/edit/'+id);
-  //   }
-  //   ctx.body = result;
-  // }
-  //
-  //
+  async edit(){
+    const ctx = this.ctx;
+    let id = ctx.params.id;
+    let _category = await this.service.category.findById(id);
+    const data = {
+      category:_category,
+    }
+    await this.ctx.render('admin/category/edit',data);
+  }
+
+  async update(){
+    const ctx = this.ctx;
+    let id = ctx.request.body.id;
+    let _name = ctx.request.body.name;
+    let _ename = ctx.request.body.ename;
+    let data = {"name":_name,"ename":_ename};
+    // let result = id;
+    let result = await this.service.category.updateById(id,data);
+    if(result){
+      ctx.redirect('/admin/categories/edit/'+id);
+    }
+    ctx.body = result;
+  }
+
+
 
 
   async destroy(){

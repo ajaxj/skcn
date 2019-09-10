@@ -6,7 +6,7 @@ class ArticleController extends Controller {
   async index(){
     const ctx = this.ctx;
     let pager = {};
-    pager.pageSize = 20;      //默认的每页数
+    pager.pageSize = 5;      //默认的每页数
     pager.pageCurrent = 1;    //默认当前页
 
     if(ctx.query.offset){
@@ -35,7 +35,12 @@ class ArticleController extends Controller {
 
 
   async add(){
-    await this.ctx.render('admin/article/add');
+      let categorylist = await this.service.category.listall();
+      const data = {
+        categorylist:categorylist,
+
+      };
+    await this.ctx.render('admin/article/add',data);
   }
 
   async create(){
@@ -44,6 +49,33 @@ class ArticleController extends Controller {
     if(_article){
       ctx.redirect('/admin/articles')
     }
+  }
+
+
+  async edit(){
+    const ctx = this.ctx;
+    let id = ctx.params.id;
+    let _article = await this.service.article.findById(id);
+    const data = {
+      article:_article,
+    }
+    await this.ctx.render('admin/article/edit',data);
+  }
+
+  async update(){
+    const ctx = this.ctx;
+    let id = ctx.request.body.id;
+    let _title = ctx.request.body.title;
+    let _summary = ctx.request.body.summary;
+    let _content = ctx.request.body.content;
+    let _status = ctx.request.body.status;
+    let data = {"title":_title,"summary":_summary,"content":_content,"status":_status};
+    // let result = id;
+    let result = await this.service.article.updateById(id,data);
+    if(result){
+      ctx.redirect('/admin/articles/edit/'+id);
+    }
+    ctx.body = result;
   }
 
 

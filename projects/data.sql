@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '名称',
-  `cname` varchar(255) NOT NULL DEFAULT '' COMMENT 'english',
+  `ename` varchar(255) NOT NULL DEFAULT '' COMMENT 'english',
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
   `deletedAt` datetime DEFAULT NULL,
@@ -38,6 +38,7 @@ CREATE TABLE `categories` (
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cid` int(10) unsigned not null comment '一对多events',
   `title` varchar(255) NOT NULL DEFAULT '' COMMENT '标题',
   `summary` text NOT NULL COMMENT '摘要',
   `content` longtext ,

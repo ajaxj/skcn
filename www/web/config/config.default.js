@@ -32,7 +32,7 @@ module.exports = appInfo => {
       password: '12345678', // 数据库密码
       define: {  // model的全局配置
         	timestamps: true,   // 添加create,update,delete时间戳
-        	paranoid: true,   // 添加软删除
+        	// paranoid: true,   // 添加软删除
         	freezeTableName: true,  // 防止修改表名为复数
         	underscored: false  // 防止驼峰式字段被默认转为下划线
       },

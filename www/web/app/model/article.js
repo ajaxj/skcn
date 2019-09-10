@@ -8,6 +8,7 @@ module.exports = app => {
       primaryKey:true,
       autuIncrement:true,
     },
+    cid:{type:INTEGER},
     title:STRING(255),
     summary:TEXT,
     content:TEXT,
@@ -17,9 +18,10 @@ module.exports = app => {
     tableName:'articles',
   });
 
-  // Event.associate = function (){
-  //     app.model.Event.hasMany(app.model.Eventdetail, {foreignKey: 'eid', targetKey: 'id'});
-  // }
+  Article.associate = function(){
+    app.model.Article.belongsTo(app.model.Category,{foreignKey:'cid',targetKey:'id'});
+  }
+
 
   return Article;
 }

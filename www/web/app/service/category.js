@@ -3,6 +3,12 @@ const Service = require('egg').Service;
 
 class CategoryService extends Service {
 
+
+  async listall(){
+    let result = await this.ctx.model.Category.findAll();
+    return result;
+  }
+
   async list(offset,limit){
     let result = await this.ctx.model.Category.findAll({offset:offset,limit:limit});
     return result;
@@ -10,6 +16,7 @@ class CategoryService extends Service {
 
   async total(){
     let result = await this.ctx.model.Category.count();
+    return result;
   }
 
   async create(request){
@@ -19,7 +26,7 @@ class CategoryService extends Service {
   }
 
   async findById(id){
-    let result = await this.ctx.model.Category.findById(id);
+    let result = await this.ctx.model.Category.findByPk(id);
     return result;
   }
 
