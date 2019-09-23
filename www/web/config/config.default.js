@@ -23,13 +23,26 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  config.bcrypt = {
+    saltRounds: 10 // default 10
+  };
+
+  config.jwt = {
+     secret: 'Great4-M',
+     enable: true, // default is false
+     match: '/jwt', // optional
+   };
+
   config.sequelize = {
       dialect: 'mysql',  // 表示使用mysql
-      host: '127.0.0.1', // 连接的数据库主机地址
+      // host: '127.0.0.1', // win7连接的数据库主机地址
+      // host:'192.168.0.113',//ubuntu测试机
+      host:'localhost',   //mbb
       port: 3306, // mysql服务端口
       database: 'skdb', // 数据库名
       username: 'root',  // 数据库用户名
-      password: '12345678', // 数据库密码
+      password:'34erdfcv',   //ubuntu测试 机
+      // password: '12345678', // win7测试 机
       define: {  // model的全局配置
         	timestamps: true,   // 添加create,update,delete时间戳
         	// paranoid: true,   // 添加软删除

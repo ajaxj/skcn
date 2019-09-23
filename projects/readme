@@ -1,6 +1,22 @@
-备注:
+egg插件:
+https://github.com/yolopunk/egg-bcrypt
+https://github.com/eggjs/egg-redis
+https://github.com/eggjs/egg-redis
+https://github.com/eggjs/egg-view-nunjucks
+https://github.com/eggjs/egg-sequelize
+https://github.com/okoala/egg-jwt      (http://npm.taobao.org/package/egg-jwt)
 
+
+参考:
+https://github.com/icxcat/egg-RESTfulAPI
+
+
+备注:
+测试服务器:
+本地ubuntu-local
 http://47.96.183.71:7006/v1/events
+
+
 
 
 测试服务器 本地和远程同步数据库用的:

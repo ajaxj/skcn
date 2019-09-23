@@ -4,6 +4,9 @@ module.exports = app =>{
   const {router,controller} = app;
   router.get("/admin",controller.admin.home.index);          //管理首页
 
+  router.get("/admin/userlogin",controller.admin.userAccess.userLogin);
+  router.post("/admin/login",controller.admin.userAccess.login);
+
   //事件crud
   router.get("/admin/events",controller.admin.event.index);
   router.get('/admin/events/add',controller.admin.event.add);

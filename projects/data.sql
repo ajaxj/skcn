@@ -53,8 +53,9 @@ CREATE TABLE `articles` (
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE `members` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `username` char(16) NOT NULL COMMENT '用户名',
-  `passwd` char(32) CHARACTER SET utf8 NOT NULL COMMENT '密码',
+  `name` varchar(255) NOT NULL COMMENT '用户名',
+  `username` varchar(255) NOT NULL COMMENT '登录名',
+  `passwd` varchar(255) NOT NULL COMMENT '密码',
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
   `deletedAt` datetime DEFAULT NULL,
