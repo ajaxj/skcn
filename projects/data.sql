@@ -49,6 +49,20 @@ CREATE TABLE `articles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+DROP TABLE IF EXISTS `members`;
+CREATE TABLE `members` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `name` varchar(100) NOT NULL COMMENT '用户名',
+  `username` varchar(100) NOT NULL COMMENT '登录名',
+  `passwd` varchar(100) NOT NULL COMMENT '密码',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+
+
 
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -66,18 +80,7 @@ CREATE TABLE `users` (
 
 
 
-DROP TABLE IF EXISTS `members`;
-CREATE TABLE `members` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `name` varchar(255) NOT NULL COMMENT '用户名',
-  `username` varchar(255) NOT NULL COMMENT '登录名',
-  `passwd` varchar(255) NOT NULL COMMENT '密码',
-  `createdAt` datetime DEFAULT NULL,
-  `updatedAt` datetime DEFAULT NULL,
-  `deletedAt` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+
 
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE `articles` (

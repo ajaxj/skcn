@@ -1,0 +1,11 @@
+vue3添加Element UI
+
+vue add element
+
+有三个选项：
+How do you want to import Element? (Use arrow keys)
+为了方便，选择第一个全局引用：fully import
+? Do you wish to overwrite Element's SCSS variables? Yes
+Choose the locale you want to load zh-CN
+
+***********************************************

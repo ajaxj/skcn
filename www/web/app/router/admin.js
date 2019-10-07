@@ -31,6 +31,13 @@ module.exports = app =>{
   router.post('/admin/articles/update',controller.admin.article.update);
   router.get("/admin/articles/delete/:id",controller.admin.article.destroy);
 
+  //抓取的影片
+  router.get("/admin/fetchmovies",controller.admin.fetchmovie.index);
+  router.get("/admin/fetchmovies/add",controller.admin.fetchmovie.add);
+  router.post("/admin/fetchmovies/create",controller.admin.fetchmovie.create);
+  router.get('/admin/fetchmovies/edit/:id',controller.admin.fetchmovie.edit);
+  router.post('/admin/fetchmovies/update',controller.admin.fetchmovie.update);
+  router.get("/admin/fetchmovies/delete/:id",controller.admin.fetchmovie.destroy);
 
 
 }

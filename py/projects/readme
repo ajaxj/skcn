@@ -1,0 +1,17 @@
+老的scrapy sk的
+https://git.coding.net/ajaxj/py2016.git
+
+
+
+
+
+CREATE TABLE `fetchmovies` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `fetchurl` varchar(255) NOT NULL,
+  `category` varchar(45) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
